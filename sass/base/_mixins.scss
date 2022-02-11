@@ -1,0 +1,10 @@
+@mixin masonry-media-query($columns, $element-width, $gap: 0){
+    @for $i from 1 to $columns{
+        $j : $columns - $i + 1;
+        $media: $element-width * $j + ($gap * ($j + 1));
+
+        @media only screen and (max-width: $media) {
+                columns: $j - 1;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+.masonry {
+    $gap: 15px;
+    $columns: 6;
+    $element-width: 235px;
+    margin: 0 auto;
+    columns: $columns;
+    gap: $gap;
+
+    @include masonry-media-query($columns, $element-width, $gap);
+
+    & > * {
+        break-inside: avoid;
+        margin-bottom: $gap;
+    }
+
+    @supports (grid-template-rows: masonry) {
+        & {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+            grid-template-rows: masonry;
+            grid-auto-flow: dense;
+            /* align-tracks: stretch; */
+        }
+    }
+    &__item{
+        width: $element-width;
+        height: 350px;
+    }
+
+    &__img{
+        height: 100%;
+        width: 100%;
+        border-radius: 10%;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
